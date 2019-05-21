@@ -15,6 +15,7 @@
 //= require jquery
 //= require bootstrap
 //= require turbolinks
+//= require trix
 //= require_tree .
 
 $(document).ready(function(){

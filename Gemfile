@@ -7,6 +7,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
+gem 'trix'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

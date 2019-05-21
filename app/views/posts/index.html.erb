@@ -18,7 +18,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= link_to post.title, post %></td>
-        <td><%= post.content %></td>
+        <td><%= post.content.html_safe %></td>
         <td><%= post.read %></td>
         <td><%= link_to post.category.title, post.category %></td>
         <td><%= post.user.email %></td>
