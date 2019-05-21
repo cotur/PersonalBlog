@@ -1,0 +1,65 @@
+<% 
+  if @edit
+    form_title = "Editing Post -> " + @post.title
+    button_title = "Update Post"
+  else
+    button_title = "Create Post"
+    form_title = "New Post"
+  end
+  
+%>
+<section class="nes-container with-title"><h3 class="title"><%= form_title %></h3>
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table align="center" width="100%" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="left">Title</td>
+      <td align="left"><%= form.text_field :title, :class =>"nes-input" %></td>
+    </tr>
+
+    <tr>
+      <td align="left">Content</td>
+      <td align="left"><%= form.text_area :content, :class =>"nes-input" %></td>
+    </tr>
+
+    <tr>
+      <td align="left">Category</td>
+      <td align="left">
+        <div class="nes-select">
+          <%= form.collection_select :category_id, Category.order(:title), :id, :title, include_blank: false, :id => "default_select"%>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="left">User</td>
+      <td align="left"><input type="text" id="inline_field" style="width: fit-content" class="nes-input is-success" disabled="true" value="<%= current_user.email%>"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><%= form.submit button_title, :class => "nes-btn is-success"%></td>
+    </tr>
+  </table>
+  
+
+<% end %>
+<% if @edit %>
+
+<%= link_to 'Show', @post %> 
+
+<% end %>
+<%= link_to 'Back', posts_path %>
+</section>
+
+
+
+

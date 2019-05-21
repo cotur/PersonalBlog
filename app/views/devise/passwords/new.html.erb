@@ -1,0 +1,21 @@
+<% content_for :title, "Reset your password" %>
+<section class="nes-container with-title  text-center">
+<h3 class="title">Forgot your password?</h3>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "nes-input" %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", :class => "nes-btn is-success" %>
+  </div>
+<% end %>
+
+<br>
+   You can <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Log in", new_user_session_path %>.
+
+  </section>

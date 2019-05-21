@@ -1,0 +1,5 @@
+<% content_for :title, "Posts | Edit -> " + @post.title %>
+
+<% @edit = true%>
+<%= render 'form', post: @post %>
+

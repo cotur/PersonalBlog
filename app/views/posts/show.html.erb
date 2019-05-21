@@ -1,0 +1,29 @@
+<% content_for :title, "Posts | " + @post.title %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @post.read %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @post.category.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
