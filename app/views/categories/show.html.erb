@@ -1,16 +1,12 @@
 <% content_for :title, "Categories | " + @category.title %>
 
-<p id="notice"><%= notice %></p>
+<section class="nes-container with-title">
+<h3 class="title"><%= @category.title %></h3> 
+<p class="desc"><%= @category.description %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
+<% @posts = @category.post %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+<%= render "posts/_shared/listpost" %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+
+</section>

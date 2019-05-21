@@ -28,9 +28,13 @@
     </tr>
 
     <tr>
+      <td align="left">Description</td>
+      <td align="left"><%= form.text_field :description, :class =>"nes-input" %></td>
+    </tr>
+
+    <tr>
       <td align="left" valign="top">Content</td>
       <td align="left">
-      <%= form.hidden_field :description, id: :job_description %>
       <%= form.hidden_field :content, id: :content_desc %>
       <trix-editor style="height: 150px" input="content_desc" class="nes-input"></trix-editor>
       </td>
