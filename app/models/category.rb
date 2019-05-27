@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-    validates_presence_of :title
+    validates :title, length: { in: 5..50 },presence: true
     
     has_many :post, :dependent => :destroy
 end

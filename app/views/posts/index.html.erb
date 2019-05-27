@@ -1,15 +1,19 @@
 <% content_for :title, "Posts" %>
 
+<div class="row">
+  <div class="col-md-12">
+    <section class="nes-container with-title">
+    <h3 class="title">All Posts</h3> 
+    <p class="desc"></p>
 
-<section class="nes-container with-title">
-<h3 class="title">All Posts</h3> 
-<p class="desc"></p>
-
-<%= render "posts/_shared/listpost" %>
+    <%= render "posts/_shared/listpost" %>
 
 
-</section>
+    </section>
 
-<% if user_signed_in? %>
-<%= link_to 'New Post', new_post_path %>
-<%end%>
+    <% if user_signed_in? %>
+    <%= link_to 'New Post', new_post_path %>
+    <%end%>
+
+    </div>
+</div>

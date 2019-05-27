@@ -8,70 +8,72 @@
   end
   
 %>
-<section class="nes-container with-title"><h3 class="title"><%= form_title %></h3>
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row">
+  <div class="col-md-12">
+    <section class="nes-container with-title"><h3 class="title"><%= form_title %></h3>
+    <%= form_with(model: post, local: true) do |form| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <table align="center" width="100%" cellpadding="2" cellspacing="0">
-    <tr>
-      <td align="left">Title</td>
-      <td align="left"><%= form.text_field :title, :class =>"nes-input" %></td>
-    </tr>
-
-    <tr>
-      <td align="left">Description</td>
-      <td align="left"><%= form.text_field :description, :class =>"nes-input" %></td>
-    </tr>
-
-    <tr>
-      <td align="left" valign="top">Content</td>
-      <td align="left">
-      <%= form.hidden_field :content, id: :content_desc %>
-      <trix-editor style="height: 150px" input="content_desc" class="nes-input"></trix-editor>
-      </td>
-    </tr>
-
-    <tr>
-      <td align="left">Category</td>
-      <td align="left">
-        <div class="nes-select">
-          <%= form.collection_select :category_id, Category.order(:title), :id, :title, include_blank: false, :id => "default_select"%>
+          <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
-      </td>
-    </tr>
+      <% end %>
+      <table align="center" width="100%" cellpadding="2" cellspacing="0">
+        <tr>
+          <td align="left">Title</td>
+          <td align="left"><%= form.text_field :title, :class =>"nes-input" %></td>
+        </tr>
 
-    <tr>
-      <td align="left">Keywords (',')</td>
-      <td align="left"><%= form.text_field :keywords, :class =>"nes-input" %></td>
-    </tr>
-    <tr>
-      <td align="left">User</td>
-      <td align="left"><input type="text" id="inline_field" style="width: fit-content" class="nes-input is-success" disabled="true" value="<%= current_user.email%>"></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><%= form.submit button_title, :class => "nes-btn is-success"%></td>
-    </tr>
-  </table>
-  
+        <tr>
+          <td align="left">Description</td>
+          <td align="left"><%= form.text_field :description, :class =>"nes-input" %></td>
+        </tr>
 
-<% end %>
-<% if @edit %>
+        <tr>
+          <td align="left">Content</td>
+          <td align="left"><%= form.text_area :content, :class =>"nes-textarea" %></td>
+        </tr>
+        
+        <tr>
+          <td align="left">Image</td>
+          <td align="left"><%= form.file_field :image, :class =>"nes-input" %></td>
+        </tr>
 
-<%= link_to 'Show', @post %> 
+        <tr>
+          <td align="left">Category</td>
+          <td align="left">
+            <div class="nes-select">
+              <%= form.collection_select :category_id, Category.order(:title), :id, :title, include_blank: false, :id => "default_select"%>
+            </div>
+          </td>
+        </tr>
 
-<% end %>
-<%= link_to 'Back', posts_path %>
-</section>
+        <tr>
+          <td align="left">Keywords (',')</td>
+          <td align="left"><%= form.text_field :keywords, :class =>"nes-input" %></td>
+        </tr>
+        <tr>
+          <td align="left">User</td>
+          <td align="left"><input type="text" id="inline_field" style="width: fit-content" class="nes-input is-success" disabled="true" value="<%= current_user.email%>"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><%= form.submit button_title, :class => "nes-btn is-success"%></td>
+        </tr>
+      </table>
+      
 
+    <% end %>
+    <% if @edit %>
 
+    <%= link_to 'Show', @post %> 
 
-
+    <% end %>
+    <%= link_to 'Back', posts_path %>
+    </section>
+  </div>
+</div>

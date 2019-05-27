@@ -87,3 +87,12 @@ section{
   font-size: 10px;
   color: darkgray;
 }
+
+.clearfix{
+  overflow: auto;
+}
+
+.post_image{
+  float:left;
+  margin: 0px 20px 10px 0px;
+}

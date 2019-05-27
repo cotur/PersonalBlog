@@ -1,29 +1,24 @@
 <% content_for :title, "Posts | " + @post.title %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content.html_safe %>
-</p>
-
-<p>
-  <strong>Read:</strong>
-  <%= @post.read %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @post.category.title %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user.email %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+  <div class="col-md-12">
+  <section class="nes-container with-title">
+    <h3 class="title"><%= link_to @post.category.title %> > <%= @post.title %></h3> 
+    <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by <span class="nes-text is-success"><%= @post.user.email %></span>, <%= @post.read %> times read.
+    <% if user_signed_in? && @post.user.id == current_user.id %>
+    <br /><br /><%= link_to 'Edit Post', edit_post_path(@post), :class => "nes-text is-warning" %> | 
+    <%= link_to 'Delete', 
+             post_path(@post), 
+                         method: :delete, 
+                         data: { confirm: 'Are you sure?' }, :class => "nes-text is-error"  %> 
+    <% end %>
+    </p>
+      <div class="clearfix">
+        <img src="<%= @post.image.url(:medium) %>" clasS="post_image" width="300px" height="225px">
+        <%= @post.content.html_safe %>
+        <br />
+        <i>Keywords: </i><%= @post.keywords.split(",").join(" ") %>
+      </div>
+  </section>
+  </div>
+</div>

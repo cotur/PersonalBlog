@@ -1,6 +1,6 @@
 <% @posts.each do |x| %>
   <section class="topic" style="overflow: auto;">
-    <img src="https://dummyimage.com/200x150/000/fff" style="float:left;margin-right: 20px">
+    <img src="<%=x.image.url(:thumb)%>" style="float:left;margin-right: 20px" width="200px" height="150px">
     <h2 id="<%= x.title %>">
       #<%= link_to x.title, x %>
     </h2>
