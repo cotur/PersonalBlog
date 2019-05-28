@@ -31,11 +31,10 @@
   <body>
 
     <%= render "layouts/_shared/navbar" %>
-    <div class="container">
-    
+    <div class="container" style="margin-top: 15px;margin-bottom: 20px">
       <%= render "layouts/_shared/devisealert" %>
-      
       <%= yield %>
     </div>
+      <%= render "layouts/_shared/footer" %>
   </body>
 </html>
