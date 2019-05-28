@@ -20,8 +20,9 @@
 
 $(document).ready(function(){
     DeviseAlertCloser();
-});
 
+
+});
 function DeviseAlertCloser(){
     var DeviseAlert = $('#deviseAlert');
     if(DeviseAlert.length){

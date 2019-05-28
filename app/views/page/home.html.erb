@@ -1,27 +1,61 @@
-      
-<main class="main-content">
-<section class="topic">
 
-<h2 id="home"><a href="#home">#</a>Pages#home</h2> 
-<p>To-Do list <br>
+<div class="row justify-content-between">
+    <div class="col-md-8">
+       
+        <section class="nes-container with-title">
+            <h3 class="title">Latest post</h3> 
+            <% 
+            @posts = Post.order(:id => "DESC").take(3) %>
+            <%= render "posts/_shared/smallcolumn_list" %>
+        </section>
 
-<ul>
-    <li>TRIX ~</li>
-    <li>Categories all pages will be editted</li>
-    <li>Posts all pages will be editted</li>
-    <li>User profile page /author will be created</li>
-    <li>Category and post deleting will be more secured => (user can delete and edit only its post)</li>
-    <li>Post images will be added</li>
-    <li>User profile photo will be added</li>
-    
-    <br><br>
-    <li>ActiveAdmin will be added</li>
-    <br>
-    <li>RSS Feed</li>
-    <li>Webhook</li>
-</ul>
+       <% 
+        Category.order(:title => "ASC").each do |cat|
+            if cat.post.count == 0
+                next
+            end
+        %>
+        <section class="nes-container with-title">
+            <h3 class="title">Latest post in <%= link_to cat.title, categories_path+"/"+cat.id.to_s %></h3> 
+            <% 
+            @posts = cat.post.reverse.take(3) %>
+            <%= render "posts/_shared/smallcolumn_list" %>
+        </section>
+        <%
+        end
+       %>
+       
+    </div>
 
-</p>
 
-</section>
-</main>
+
+    <div class="col-md-4">
+        <section class="nes-container with-title">
+            <h3 class="title">Most Readed Posts</h3> 
+            <% 
+            @posts = Post.order(:read => "DESC").take(3) %>
+            <%= render "posts/_shared/smallcolumn_list" %>
+        </section>
+
+        <section class="nes-container with-title">
+            <h3 class="title">Authors</h3> 
+            
+
+            <% User.all.each do |author| %>
+
+                
+                <div class="nes-container is-rounded is-dark clearfix text-center">
+                
+                <%= link_to author.name + " " + author.sirname, authors_path+"/"+author.id.to_s, :style=>"color:white"%>
+                
+                
+                </div>
+                        
+
+            <% end %>
+
+
+        </section>
+
+    </div>
+</div>
