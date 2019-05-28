@@ -4,7 +4,7 @@
   <div class="col-md-8">
   <section class="nes-container with-title">
     <h3 class="title"><%= link_to @post.category.title %> > <%= @post.title %></h3> 
-    <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by <span class="nes-text is-success"><%= @post.user.email %></span>, <%= @post.read %> times read.
+    <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by <%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>, <%= @post.read %> times read.
     <% if user_signed_in? && @post.user.id == current_user.id %>
     <br /><br /><%= link_to 'Edit Post', edit_post_path(@post), :class => "nes-text is-warning" %> | 
     <%= link_to 'Delete', 
@@ -49,6 +49,15 @@
     <%= render "posts/_shared/smallcolumn_list" %>
   </section>
     
+    <section class="nes-container with-title">
+    <h3 class="title">Latest Post by <%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %></h3> 
+    <p class="desc"></p>
+    <% 
+    arr = @post.user.post.select{ |p| p.id != @post.id }
+    @posts = arr.last(3).reverse %>
+    <%= render "posts/_shared/smallcolumn_list" %>
+  </section>
+
 </div>
 
   </div>

@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-          <a class="nav-link" href="<%= posts_path %>">All Posts</a>
+          <a class="nav-link" href="<%= posts_path %>">All Posts</a> 
         </li>
         
 
@@ -31,23 +31,7 @@
           <a class="nav-link" href="<%= authors_path %>">Authors</a>
         </li>
         
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Contact!
-        </a>
-          
-          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="mailto:ahmet.cotur@hotmail.com" target="_blank"><i class="nes-icon gmail" style="margin-right: 25px;margin-bottom: 10px;"></i>Mail</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://linkedin.com/in/cotur/" target="_blank"><i class="nes-icon linkedin" style="margin-right: 25px;margin-bottom: 10px;"></i>LinkedIn</a>
-            <a class="dropdown-item" href="https://github.com/cotur" target="_blank"><i class="nes-icon github" style="margin-right: 25px;margin-bottom: 10px;"></i>GitHub</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://twitter.com/CoturAhmet" target="_blank"><i class="nes-icon twitter" style="margin-right: 25px;margin-bottom: 10px;"></i>Twitter</a>
-            <a class="dropdown-item" href="https://instagram.com/ahmet.cotur" target="_blank"><i class="nes-icon instagram" style="margin-right: 25px;margin-bottom: 10px;"></i>Instagram</a>
-            <a class="dropdown-item" href="https://fb.com/ahmet.cotur" target="_blank"><i class="nes-icon facebook" style="margin-right: 25px;margin-bottom: 10px;"></i>Facebook</a>
-            
-          </div>
-        </li>
+        
 
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
@@ -62,7 +46,7 @@
             
             
             <div class="dropdown-divider"></div>
-            <%= link_to('Logout', destroy_user_session_path, {method: :delete, :class => "nav-link"}) %>
+            <%= link_to('Logout', destroy_user_session_path, {method: :delete, :class => "dropdown-item"}) %>
             
           </div>
         </li>

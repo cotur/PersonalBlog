@@ -5,8 +5,8 @@
       #<%= link_to x.title, x %>
     </h3>
     <%= link_to x.category.title, x.category, :class => "nes-text is-error", "style" => "font-size:10px" %>
-    <span style="font-size:10px">-</span>
-    <span class="nes-text is-success" style="font-size:10px"><%=x.user.email%></span>
+    <span style="font-size:10px">- By: </span>
+    <%= link_to x.user.name + " " + x.user.sirname, authors_path + "/" + x.user.id.to_s, :class => "nes-text is-success" , :style=>"font-size:10px"%>
     <p><%= x.description %></p>
   </section>
   <hr>

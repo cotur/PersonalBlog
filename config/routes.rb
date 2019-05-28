@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'authors/', to: "author#index", as: "authors"
   get 'authors/:id', to: "author#show"
   
@@ -13,5 +15,9 @@ Rails.application.routes.draw do
   devise_for :users
   
   root to: "page#home"
+  
+  get "notfound", to: "error#notfound", as: "notfound"
+
+  get "*path" => redirect("/notfound")
   
 end

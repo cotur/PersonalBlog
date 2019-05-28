@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
 gem 'trix'
+gem 'activeadmin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
