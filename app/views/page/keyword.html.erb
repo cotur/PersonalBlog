@@ -1,0 +1,14 @@
+<% content_for :title, "Keyword => " + params[:q] %>
+
+<div class="row">
+  <div class="col-md-12">
+    <section class="nes-container with-title">
+    <h3 class="title">Keyword > <%= params[:q] %></h3> 
+    <p class="desc">All posts who includes the <%= params[:q] %> keyword.</p>
+
+    <%= render "posts/_shared/listpost" %>
+
+
+    </section>
+    </div>
+</div>

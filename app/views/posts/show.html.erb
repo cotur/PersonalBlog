@@ -17,7 +17,13 @@
         <img src="<%= @post.image.url(:medium) %>" clasS="post_image" width="300px" height="225px">
         <%= @post.content.html_safe %>
         <br />
-        <i>Keywords: </i><%= @post.keywords.split(",").join(" ") %>
+        <% if @post.keywords.length > 0 %>
+          <i>Keywords: </i>
+          <% @post.keywords.split(",").each do |keyword| %>
+            <%= link_to keyword, :controller => :page, :action => :keyword, :q => keyword.strip %>
+          <% end %>
+        <% end %>
+
       </div>
   </section>
   </div>

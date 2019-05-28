@@ -1,11 +1,41 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="nes-container with-title text-center">
+  <h3 class="title">Edit profile</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "nes-input" %>
+  </div>
+  <div class="field">
+    <%= f.label :sirname %><br />
+    <%= f.text_field :sirname, :class => "nes-input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :social %>ex: <span class="nes-text is-error">(instagram:ahmet.cotur,facebook:ahmet.cotur)</span><br />
+    <%= f.text_field :social, :class => "nes-input" %>
+  </div>
+  
+  <% if current_user.image? %>
+    <div class="field">
+      Current Profile Picture <br>
+      <img src="<%=@current_user.image.url(:medium)%>" width="200px" height="200px">
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, :class => "nes-input", :style => "max-width: 60%;" %>
+  </div>
+
+  <hr />
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", :class => "nes-input" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -14,7 +44,7 @@
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", :class => "nes-input" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -23,21 +53,22 @@
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "nes-input" %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", :class => "nes-input" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", :class => "nes-btn is-success" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "nes-btn is-error" %></p>
 
 <%= link_to "Back", :back %>
+  </section>

@@ -12,7 +12,7 @@
         </li>
         
 
-<li class="nav-item dropdown">
+    <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Categories
     </a>
@@ -27,7 +27,9 @@
         
       </div>
     </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="<%= authors_path %>">Authors</a>
+        </li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,9 +50,23 @@
         </li>
 
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+          
+          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+            
+            <a class="dropdown-item" href="<%= authors_path %>/<%=current_user.id%>">Profile</a>
+            <a class="dropdown-item" href="<%=edit_user_registration_path%>">Settings</a>
+            
+            
+            <div class="dropdown-divider"></div>
             <%= link_to('Logout', destroy_user_session_path, {method: :delete, :class => "nav-link"}) %>
-          </li>
+            
+          </div>
+        </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Log in", new_user_session_path, :class => "nav-link" %>

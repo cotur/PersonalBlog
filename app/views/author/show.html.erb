@@ -1,0 +1,72 @@
+<% content_for :title, "Author | " + @author.email %>
+
+<div class="row" style="margin-top:20px">
+  
+  <div class="col-md-3 nes-container with-title text-center">
+        <h3 class="title">Profile</h3> 
+    
+    <a href="" class="contributor">
+    <img style="width:124px;height:124px" data-src="<%= @author.image.url(:medium) %>" alt="<%= @author.email %>" class="nes-avatar is-large is-rounded" src="<%= @author.image.url(:medium) %>">
+    <p><%= @author.name %> <%= @author.sirname %></p>
+    </a>
+    <% social ={}
+        var = @author.social&.split(",")
+        
+        if var != nil
+            var.each do |sc|
+                soc = sc.split(":")
+                social[soc[0]] = soc[1]
+            end
+        end
+        
+    %>
+    <a class="dropdown-item" href="mailto:<%=@author.email%>" target="_blank"><i class="nes-icon gmail" style="margin-right: 25px;margin-bottom: 10px;"></i>Mail</a>
+        <div class="dropdown-divider"></div>
+    <% if social["linkedin"] || social["github"] 
+        if social["linkedin"]
+        %>
+        <a class="dropdown-item" href="https://linkedin.com/in/<%=social["linkedin"]%>/" target="_blank"><i class="nes-icon linkedin" style="margin-right: 25px;margin-bottom: 10px;"></i>LinkedIn</a>
+        <%
+        end
+        if social["github"]
+        %>
+        <a class="dropdown-item" href="https://github.com/<%=social["github"]%>" target="_blank"><i class="nes-icon github" style="margin-right: 25px;margin-bottom: 10px;"></i>GitHub</a>
+        <%
+        end
+    %>
+        <div class="dropdown-divider"></div>
+    <% end %>
+    
+    <%
+        if social["twitter"]
+        %>
+        <a class="dropdown-item" href="https://twitter.com/<%= social["twitter"] %>" target="_blank"><i class="nes-icon twitter" style="margin-right: 25px;margin-bottom: 10px;"></i>Twitter</a>
+        <%
+        end
+
+        if social["facebook"]
+        %>
+        <a class="dropdown-item" href="https://fb.com/<%=social["facebook"]%>" target="_blank"><i class="nes-icon facebook" style="margin-right: 25px;margin-bottom: 10px;"></i>Facebook</a>
+        <%
+        end
+
+        if social["instagram"]
+        %>
+        <a class="dropdown-item" href="https://instagram.com/<%= social["instagram"] %>" target="_blank"><i class="nes-icon instagram" style="margin-right: 25px;margin-bottom: 10px;"></i>Instagram</a>
+        <%
+        end
+    %>
+         
+
+    </div>
+  
+  
+  
+  <div class="col-md-8 offset-md-1 nes-container with-title">
+    <h3 class="title">Latest posts by <%= @author.name %></h3> 
+    <% @posts = @author.post.take(3) %>
+    <%= render "posts/_shared/listpost" %>
+  </div>
+
+   </div>
+</div>

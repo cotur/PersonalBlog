@@ -3,17 +3,15 @@
 <div class="row">
   <div class="col-md-12">
     <section class="nes-container with-title">
-    <h3 class="title">All Posts</h3> 
+    <h3 class="title">All Posts
+    <% if user_signed_in? %>
+    > <%= link_to 'Create New Post', new_post_path %>
+    <%end%></h3> 
     <p class="desc"></p>
 
     <%= render "posts/_shared/listpost" %>
 
 
     </section>
-
-    <% if user_signed_in? %>
-    <%= link_to 'New Post', new_post_path %>
-    <%end%>
-
-    </div>
+  </div>
 </div>

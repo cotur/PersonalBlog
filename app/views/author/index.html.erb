@@ -1,0 +1,102 @@
+<%
+content_for :title, "Authors"
+%>
+<section class="topic">
+    <h2 id="authors"><a href="#authors">#</a>Authors</h2> 
+    <p>All authors.</p>
+</section>
+<%
+    @authors.to_a
+    while @authors.count > 0 do
+        %>
+        <div class="row d-flex justify-content-between" style="margin-top:20px">
+        <%
+
+        @authors.pop(2).each do |author|
+        %>
+        <div class="col-md-6 clearfix">
+        <div class="nes-container is-rounded is-dark clearfix">
+            <div class="row">
+            <div class="col-md-3">
+                <a href="<%= authors_path + "/" + author.id.to_s%>">
+                <img style="width:97px;height:97px" data-src="<%= author.image.url(:medium) %>" alt="<%=author.email%>" class="nes-avatar is-large is-rounded" src="<%= author.image.url(:medium) %>">
+                </a>
+            </div>
+            <div class="col-md-9">
+                <a style="color:white" href="<%= authors_path + "/" + author.id.to_s%>">
+                    <h4 class="name"><p><%= author.name %> <%= author.sirname %></p></h4>
+                </a>
+                <p>
+                <a href="mailto:<%=author.email%>" target="_blank" rel="noopener" aria-label="mail"></a>
+                </p>
+                    <div>
+                        <%
+                        social ={}
+                        var = author.social&.split(",")
+        
+                        if var != nil
+                            var.each do |sc|
+                                soc = sc.split(":")
+                                social[soc[0]] = soc[1]
+                            end
+                        end
+
+                        if social["linkedin"]
+                            %>
+                                <a href="https://linkedin.com/in/<%=social["linkedin"]%>" target="_blank" rel="noopener" aria-label="linkedin">
+                                    <i class="nes-icon linkedin"></i>
+                                </a>
+                            <%
+                        end
+                        if social["github"]
+                            %>
+                                <a href="https://github.com/<%=social["github"]%>" target="_blank" rel="noopener" aria-label="github">
+                                    <i class="nes-icon github"></i>
+                                </a>
+                            <%
+                        end
+                        if social["twitter"]
+                            %>
+                                <a href="https://twitter.com/<%=social["twitter"]%>" target="_blank" rel="noopener" aria-label="twitter">
+                                    <i class="nes-icon twitter"></i>
+                                </a>
+                            <%
+                        end
+                        if social["instagram"]
+                            %>
+                                <a href="https://instagram.com/<%=social["instagram"]%>" target="_blank" rel="noopener" aria-label="instagram">
+                                    <i class="nes-icon instagram"></i>
+                                </a>
+                            <%
+                        end
+                        if social["facebook"]
+                            %>
+                                <a href="https://fb.com/<%=social["facebook"]%>" target="_blank" rel="noopener" aria-label="facebook">
+                                    <i class="nes-icon facebook"></i>
+                                </a>
+                            <%
+                        end
+
+                        %>
+                        
+                    </div>
+            </div>
+            </div>
+            
+        </div>
+        </div>
+        <%
+        end
+
+        %>
+        </div>
+        </div>
+        <%
+        
+    end
+%>
+
+
+    
+
+
