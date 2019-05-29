@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-8">
   <section class="nes-container with-title">
-    <h3 class="title"><%= link_to @post.category.title %> > <%= @post.title %></h3> 
+    <h3 class="title"><%= link_to @post.category.title, categories_path+ "/" + @post.category.id.to_s %> > <%= @post.title %></h3> 
     <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by 
 	<% if @post.user.name == nil || @post.user.sirname == nil %>
 	<%= link_to @post.user.email, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>
