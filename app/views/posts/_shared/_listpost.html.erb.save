@@ -1,10 +1,9 @@
-
 <% @posts.each do |x| %>
   <section class="topic" style="overflow: auto;">
-<% if x.image? %>    
-<img src="<%=x.image.url(:thumb)%>" style="float:left;margin-right: 20px" width="200px" height="150px">
-<% end %>    
-<h3 id="<%= x.title %>">
+   <% if x.image != nil %>
+    <img src="<%=x.image.url(:thumb)%>" style="float:left;margin-right: 20px" width="200px" height="150px">
+    
+	<h3 id="<%= x.title %>">
       #<%= link_to x.title, x %>
     </h3>
     <%= link_to x.category.title, x.category, :class => "nes-text is-error", "style" => "font-size:10px" %>

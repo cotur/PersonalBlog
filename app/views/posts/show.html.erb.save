@@ -19,8 +19,8 @@
                          data: { confirm: 'Are you sure?' }, :class => "nes-text is-error"  %> 
     <% end %>
     </p>
-      <div class="clearfix">
-        <% if @post.image? %><img src="<%= @post.image.url(:medium) %>" clasS="post_image" width="300px" height="225px"><% end %> 
+      <xdiv class="clearfix">
+        <img src="<%= @post.image.url(:medium) %>" clasS="post_image" width="300px" height="225px">
         <%= @post.content.html_safe %>
         <br />
         <% if @post.keywords.length > 0 %>

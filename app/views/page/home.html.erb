@@ -6,7 +6,7 @@
             <h3 class="title">Latest post</h3> 
             <% 
             @posts = Post.order(:id => "DESC").take(3) %>
-            <%= render "posts/_shared/smallcolumn_list" %>
+            <%= render "posts/_shared/listpost" %>
         </section>
 
        <% 
