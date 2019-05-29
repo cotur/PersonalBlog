@@ -1,4 +1,4 @@
-
+<% content_for :title, "Just another blog" %>
 <div class="row justify-content-between">
     <div class="col-md-8">
        
@@ -19,7 +19,7 @@
             <h3 class="title">Latest post in <%= link_to cat.title, categories_path+"/"+cat.id.to_s, :class => "nes-text is-error" %></h3> 
             <% 
             @posts = cat.post.reverse.take(3) %>
-            <%= render "posts/_shared/smallcolumn_list" %>
+            <%= render "posts/_shared/listpost" %>
         </section>
         <%
         end
