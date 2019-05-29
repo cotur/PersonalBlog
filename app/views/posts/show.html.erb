@@ -38,7 +38,7 @@
 <div class="col-md-4">
 
   <section class="nes-container with-title">
-    <h3 class="title">Most Read in <%= @post.category.title %></h3> 
+    <h3 class="title">Most Read in <%= link_to @post.category.title, categories_path + "/" + @post.category.id.to_s, :class =>"nes-text is-error" %></h3> 
     <p class="desc"></p>
     <% 
     arr = Post.where("category_id = ?", @post.category.id).order(:read => "DESC").take(3)
@@ -47,7 +47,7 @@
   </section>
 
   <section class="nes-container with-title">
-    <h3 class="title">Latest Post in <%= @post.category.title %></h3> 
+    <h3 class="title">Latest Post in <%= link_to @post.category.title, categories_path + "/" + @post.category.id.to_s, :class =>"nes-text is-error" %></h3> 
     <p class="desc"></p>
     <% 
     arr = @post.category.post.select{ |p| p.id != @post.id }
