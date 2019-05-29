@@ -45,9 +45,11 @@
 
                 
                 <div class="nes-container is-rounded is-dark clearfix text-center">
-                
+                <% if author.name == nil || author.sirname == nil %>
+		<%= link_to author.email, authors_path+"/"+author.id.to_s, :style=>"color:white"%>
+		<% else %>
                 <%= link_to author.name + " " + author.sirname, authors_path+"/"+author.id.to_s, :style=>"color:white"%>
-                
+                <% end %>
                 
                 </div>
                         

@@ -4,7 +4,13 @@
   <div class="col-md-8">
   <section class="nes-container with-title">
     <h3 class="title"><%= link_to @post.category.title %> > <%= @post.title %></h3> 
-    <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by <%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>, <%= @post.read %> times read.
+    <p class="desc"><%= @post.created_at.strftime("Posted on %d.%m.%Y")%> by 
+	<% if @post.user.name == nil || @post.user.sirname == nil %>
+	<%= link_to @post.user.email, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>
+	<% else %>
+	<%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>, 
+	<% end %>
+	<%= @post.read %> times read.
     <% if user_signed_in? && @post.user.id == current_user.id %>
     <br /><br /><%= link_to 'Edit Post', edit_post_path(@post), :class => "nes-text is-warning" %> | 
     <%= link_to 'Delete', 
@@ -50,7 +56,13 @@
   </section>
     
     <section class="nes-container with-title">
-    <h3 class="title">Latest Post by <%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %></h3> 
+    <h3 class="title">Latest Post by 
+	<% if @post.user.name == nil || @post.user.sirname == nil %>
+	<%= link_to @post.user.email, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>
+	<% else %>
+	<%= link_to @post.user.name + " " + @post.user.sirname, authors_path + "/" + @post.user.id.to_s, :class => "nes-text is-success" %>
+	<% end %>
+	</h3> 
     <p class="desc"></p>
     <% 
     arr = @post.user.post.select{ |p| p.id != @post.id }

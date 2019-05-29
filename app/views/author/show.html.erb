@@ -7,8 +7,10 @@
     
     <a href="" class="contributor">
     <img style="width:124px;height:124px" data-src="<%= @author.image.url(:medium) %>" alt="<%= @author.email %>" class="nes-avatar is-large is-rounded" src="<%= @author.image.url(:medium) %>">
-    <p><%= @author.name %> <%= @author.sirname %></p>
-    </a>
+	<% if @author.name != nil && @author.sirname != nil %>
+	 <p><%= @author.name %> <%= @author.sirname %></p>
+    	<% end %>
+	</a>
     <% social ={}
         var = @author.social&.split(",")
         

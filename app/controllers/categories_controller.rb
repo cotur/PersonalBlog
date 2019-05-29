@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  
+  before_action :check_user, only: [:edit, :update, :destroy, :new]
   # GET /categories
   # GET /categories.json
   def index
@@ -71,5 +71,11 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:title, :description)
+    end
+
+    def check_user
+	if current_user.id != 1
+		redirect_to categories_url, notice: "You do not have permission to do that"
+	end
     end
 end

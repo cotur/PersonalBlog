@@ -22,9 +22,15 @@ content_for :title, "Authors"
                 </a>
             </div>
             <div class="col-md-9">
+		<% if author.name != nil && author.sirname != nil %>
                 <a style="color:white" href="<%= authors_path + "/" + author.id.to_s%>">
                     <h4 class="name"><p><%= author.name %> <%= author.sirname %></p></h4>
                 </a>
+		<% else %>
+		<a style="color:white" href="<%= authors_path + "/" + author.id.to_s %>">
+			<h5 class="name"><p><%= author.email %></p></h4>
+		</a>
+		<% end %>
                 <p>
                 <a href="mailto:<%=author.email%>" target="_blank" rel="noopener" aria-label="mail"></a>
                 </p>

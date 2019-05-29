@@ -6,7 +6,11 @@
     </h3>
     <%= link_to x.category.title, x.category, :class => "nes-text is-error", "style" => "font-size:10px" %>
     <span style="font-size:10px">- By: </span>
-    <%= link_to x.user.name + " " + x.user.sirname, authors_path + "/" + x.user.id.to_s, :class => "nes-text is-success" , :style=>"font-size:10px"%>
+    <% if x.user.name == nil || x.user.sirname == nil %>
+	<%= link_to x.user.email, authors_path + "/" + x.user.id.to_s, :class => "nes-text is-success", :style => "font-size:10px" %>
+	<% else %>
+	<%= link_to x.user.name + " " + x.user.sirname, authors_path + "/" + x.user.id.to_s, :class => "nes-text is-success" , :style=>"font-size:10px"%>
+	<% end %>
     <p><%= x.description %></p>
   </section>
   <hr>
