@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. clone the repository "git clone github.com:cotur/PersonalBlog.git"
 
-Things you may want to cover:
+2. rund "bundle" command
 
-* Ruby version
+3. rake db:create
 
-* System dependencies
+4. rake db:migrate
 
-* Configuration
+ 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+And it's done. :)
